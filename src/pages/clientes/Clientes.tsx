@@ -30,7 +30,7 @@ export const Clientes: React.FC = () => {
 
   return (
     <>
-      <div className="relative h-screen w-screen overflow-hidden bg-background p-8">
+      <div className="relative flex h-screen w-screen overflow-hidden bg-background p-16">
         <video
           autoPlay
           loop
@@ -41,7 +41,7 @@ export const Clientes: React.FC = () => {
           Your browser does not support the video tag.
         </video>
 
-        <div className="relative min-h-screen text-white flex flex-col">
+        <div className="relative text-white flex flex-col">
           {/* Botón de regreso */}
           <header className="flex w-full ">
             <button
@@ -52,14 +52,14 @@ export const Clientes: React.FC = () => {
             </button>
           </header>
 
-          <main className="w-full flex items-center">
+          <main className="w-screen flex items-center flex-grow">
             {/* Información del cliente */}
-            <div className="text-left text-primary text-4xl font-bold w-1/4">
+            <div className="absolute transform -translate-y-1/2 left-0 top-1/2  text-primary text-3xl font-bold w-1/4">
               CONOCE ACERCA DE NUESTROS CLIENTES
             </div>
 
             {/* Carrusel de tarjetas de clientes */}
-            <div className="flex overflow-hidden mx-auto snap-x scrollbar-hide mt-32 ml-16">
+            <div className="flex overflow-hidden mx-auto snap-x scrollbar-hide">
               {clients.map((client, index) => (
                 <div
                   key={index}
