@@ -5,6 +5,7 @@ import { Clientes } from "./pages/clientes/Clientes";
 import { Equipo } from "./pages/equipo/Equipo";
 import { Home } from "./pages/home/Home";
 import { Blockchain } from "./pages/servicios/Blockchain";
+import { Marketing } from "./pages/servicios/Marketing";
 import { Servicios } from "./pages/servicios/Servicios";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
     // <Equipo />
     // <Home />
     // <Servicios />
-    <Blockchain />
+    // <Blockchain />
+    <Marketing />
 
     //   <div className="relative h-screen w-screen overflow-hidden bg-background">
     //   <video

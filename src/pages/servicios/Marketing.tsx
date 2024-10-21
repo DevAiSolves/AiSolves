@@ -1,51 +1,33 @@
 import backgroundVideo2 from "../../assets/background-video-2.mp4";
 import back from "../../assets/Back.png";
-import tokenizacionActivos from "../../assets/tokenizacion-activos.png";
-import creacionToken from "../../assets/creacion-token.png";
-import smartDapps from "../../assets/smart-dapps.png";
-import staking from "../../assets/staking.png";
-import asesoria from "../../assets/asesoria.png";
-import marketplace from "../../assets/marketplace.png";
-import nft from "../../assets/coleccion-nft.png";
-import signoSuma from "../../assets/signo-suma.png";
-import AiSolves from "../../assets/AiSolves.png";
+import automatizacion from "../../assets/automatizacion.png";
+import redesSociales from "../../assets/redes-sociales.png";
+import branding from "../../assets/Branding.png";
+import seoSem from "../../assets/seo-sem.png";
 
-import SimpleButton from "../../components/buttons/SimpleButton";
 import Footer from "../../components/Footer";
 import { ServiceItem } from "./components/ServiceItem";
 
-const blockchainServices = [
+const marketingServices = [
   {
-    title: "Tokenización de activos",
-    img: tokenizacionActivos,
+    title: "Automatización y CRM",
+    img: automatizacion,
   },
   {
-    title: "Creación de Token",
-    img: creacionToken,
+    title: "Redes Sociales",
+    img: redesSociales,
   },
   {
-    title: "Smart DAPPS y contratos",
-    img: smartDapps,
+    title: "Branding",
+    img: branding,
   },
   {
-    title: "Staking",
-    img: staking,
-  },
-  {
-    title: "Asesoría",
-    img: asesoria,
-  },
-  {
-    title: "Colección NFT Completa",
-    img: nft,
-  },
-  {
-    title: "Marketplace",
-    img: marketplace,
+    title: "SEO / SEM",
+    img: seoSem,
   },
 ];
 
-export const Blockchain: React.FC = () => {
+export const Marketing: React.FC = () => {
   const handleBackClick = () => {
     console.log("Botón de regreso presionado");
   };
@@ -75,12 +57,12 @@ export const Blockchain: React.FC = () => {
 
         <main className="w-screen flex items-center flex-grow">
           <div className="absolute transform -translate-y-1/2 left-0 top-1/2  text-primary text-3xl font-bold w-1/4">
-            EL PODER DE LA BLOCKCHAIN A TU DISPOSICIÓN
+            MARKETING REVOLUCIONARIO
           </div>
 
           {/* Carrusel de itmes de servicios */}
           <div className="flex flex-wrap justify-evenly items-center overflow-hidden mx-auto snap-x scrollbar-hide w-1/2 h-3/4">
-            {blockchainServices.map((item) => (
+            {marketingServices.map((item) => (
               <ServiceItem item={item} />
             ))}
           </div>
