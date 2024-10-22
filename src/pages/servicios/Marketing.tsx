@@ -1,5 +1,4 @@
 import backgroundVideo2 from "../../assets/background-video-2.mp4";
-import back from "../../assets/Back.png";
 import automatizacion from "../../assets/automatizacion.png";
 import redesSociales from "../../assets/redes-sociales.png";
 import branding from "../../assets/Branding.png";
@@ -8,10 +7,14 @@ import seoSem from "../../assets/seo-sem.png";
 import Footer from "../../components/Footer";
 import { ServiceItem } from "./components/ServiceItem";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 export const Marketing: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleBackClick = () => {
-    console.log("Botón de regreso presionado");
+    navigate("/services");
   };
 
   const [isAutomatizationActive, setIsAutomatizationActive] = useState(false);
@@ -65,14 +68,8 @@ export const Marketing: React.FC = () => {
 
       <div className="relative text-white flex flex-col w-full">
         {/* Botón de regreso */}
-        <header className="flex w-full ">
-          <button
-            onClick={handleBackClick}
-            className=" text-primary hover:text-pink-700 transition duration-200"
-          >
-            <img src={back} alt="back button" />
-          </button>
-        </header>
+
+        <Header onClick={handleBackClick} />
 
         <main className="w-screen flex items-center flex-grow">
           <div className="absolute transform -translate-y-1/2 left-0 top-1/2  text-primary text-3xl font-bold w-1/4">

@@ -2,8 +2,8 @@ import backgroundVideo from "../../assets/background-video.mp4";
 import aleatory from "../../assets/aleatory-background-video.mp4";
 import cocay from "../../assets/cocay-token-background-video.mov";
 import zamina from "../../assets/zamina-nft-background-video.mov";
-import back from "../../assets/Back.png";
-import SimpleButton from "../../components/buttons/SimpleButton";
+import Footer from "../../components/Footer";
+import { Header } from "../../components/Header";
 
 export const Equipo: React.FC = () => {
   const handleBackClick = () => {
@@ -42,15 +42,7 @@ export const Equipo: React.FC = () => {
         </video>
 
         <div className="relative text-white flex flex-col justify-between">
-          {/* Botón de regreso */}
-          <header className="flex w-full ">
-            <button
-              onClick={handleBackClick}
-              className=" text-primary hover:text-pink-700 transition duration-200"
-            >
-              <img src={back} alt="back button" />
-            </button>
-          </header>
+          <Header onClick={handleBackClick} />
 
           <main className="w-screen flex flex-grow items-center ">
             {/* Información del cliente */}
@@ -60,7 +52,7 @@ export const Equipo: React.FC = () => {
 
             {/* Carrusel de tarjetas de clientes */}
             <div className="flex overflow-hidden snap-x scrollbar-hide gap-6 justify-center w-full">
-              {clients.map((e) => (
+              {clients.map(() => (
                 <div className="bg-gray-800 rounded-lg p-4 w-60 h-80 text-center border-2 border-primary ">
                   <div className="mb-4">
                     <img
@@ -78,25 +70,7 @@ export const Equipo: React.FC = () => {
             </div>
           </main>
 
-          {/* Navegación inferior */}
-          <footer className="w-full flex justify-center space-x-8 text-xs">
-            {[
-              "Servicios",
-              "Portfolio",
-              "Nosotros",
-              "Whitepaper",
-              "Mi Cuenta",
-            ].map((item) => (
-              // <button
-              //   key={index}
-              //   className="hover:text-pink-500 transition duration-200"
-              // >
-              //   {item}
-              // </button>
-
-              <SimpleButton text={item} onClick={() => {}} key={item} />
-            ))}
-          </footer>
+          <Footer />
         </div>
       </div>
     </>

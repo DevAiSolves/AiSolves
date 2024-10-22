@@ -1,5 +1,4 @@
 import backgroundVideo2 from "../../assets/background-video-2.mp4";
-import back from "../../assets/Back.png";
 import tokenizacionActivos from "../../assets/tokenizacion-activos.png";
 import creacionToken from "../../assets/creacion-token.png";
 import smartDapps from "../../assets/smart-dapps.png";
@@ -11,12 +10,10 @@ import nft from "../../assets/coleccion-nft.png";
 import Footer from "../../components/Footer";
 import { ServiceItem } from "./components/ServiceItem";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 export const Blockchain: React.FC = () => {
-  const handleBackClick = () => {
-    console.log("Botón de regreso presionado");
-  };
-
   const [isTokenizationActive, setIsTokenizationActive] = useState(false);
   const [isTokenCreationActive, setIsTokencreationActive] = useState(false);
   const [isSmartDappsActive, setIsSmartDappsActive] = useState(false);
@@ -24,6 +21,12 @@ export const Blockchain: React.FC = () => {
   const [isAsesoriaActive, setIsAsesoriaActive] = useState(false);
   const [isNftActive, setIsNftActive] = useState(false);
   const [isMarketplaceActive, setIsMarketplaceActive] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate("/services");
+  };
 
   const blockchainServices = [
     {
@@ -100,14 +103,7 @@ export const Blockchain: React.FC = () => {
       </video>
 
       <div className="relative text-white flex flex-col w-full">
-        <header className="flex w-full ">
-          <button
-            onClick={handleBackClick}
-            className=" text-primary hover:text-pink-700 transition duration-200"
-          >
-            <img src={back} alt="back button" />
-          </button>
-        </header>
+        <Header onClick={handleBackClick} />
 
         <main className="w-screen flex items-center flex-grow">
           <div className="absolute transform -translate-y-1/2 left-0 top-1/2  text-primary text-3xl font-bold w-1/4">

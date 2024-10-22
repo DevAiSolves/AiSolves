@@ -2,7 +2,16 @@ import backgroundVideo from "../../assets/background-video.mp4";
 import SimpleButton from "../../components/buttons/SimpleButton";
 import AiSolves from "../../assets/AiSolves.png";
 
+import { useNavigate } from "react-router-dom";
+
 export const Home: React.FC = () => {
+  const navigate = useNavigate();
+
+  const goToServices = () => navigate("/services");
+  const goToPortfolio = () => navigate("/clients");
+  const goToWhitePaper = () => navigate("/");
+  const goToAboutUs = () => navigate("/team");
+
   return (
     <>
       <div className="relative h-screen flex flex-col items-center  overflow-hidden bg-background p-16">
@@ -30,30 +39,26 @@ export const Home: React.FC = () => {
             <div className="w-fit  top-0 left-0 absolute ">
               <SimpleButton
                 text="Servicios"
-                onClick={() => {}}
+                onClick={goToServices}
                 showLine={true}
               />
             </div>
 
             <div className="w-fit  bottom-0 left-0 absolute ">
-              <SimpleButton text="Portafolio" onClick={() => {}} />
+              <SimpleButton text="Portafolio" onClick={goToPortfolio} />
             </div>
 
             <div className="w-fit  top-0 right-0 absolute ">
-              <SimpleButton text="Whitepaper" onClick={() => {}} />
+              <SimpleButton text="Whitepaper" onClick={goToWhitePaper} />
             </div>
 
             <div className="w-fit  bottom-0 right-0 absolute ">
-              <SimpleButton text="Nosotros" onClick={() => {}} />
+              <SimpleButton text="Nosotros" onClick={goToAboutUs} />
             </div>
           </div>
         </div>
         {/* Botón Log In */}
-        <SimpleButton
-          text="Log In"
-          onClick={() => {}}
-          //   className="mt-8 bg-pink-600 hover:bg-pink-700 text-white py-2 px-8 rounded-full"
-        />
+        <SimpleButton text="Log In" onClick={() => {}} alwaysShadow={true} />
       </div>
     </>
   );

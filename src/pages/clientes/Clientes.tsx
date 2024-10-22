@@ -2,8 +2,8 @@ import backgroundVideo2 from "../../assets/background-video-2.mp4";
 import aleatory from "../../assets/aleatory-background-video.mp4";
 import cocay from "../../assets/cocay-token-background-video.mov";
 import zamina from "../../assets/zamina-nft-background-video.mov";
-import back from "../../assets/Back.png";
-import SimpleButton from "../../components/buttons/SimpleButton";
+import Footer from "../../components/Footer";
+import { Header } from "../../components/Header";
 
 export const Clientes: React.FC = () => {
   const handleBackClick = () => {
@@ -42,15 +42,7 @@ export const Clientes: React.FC = () => {
         </video>
 
         <div className="relative text-white flex flex-col">
-          {/* Botón de regreso */}
-          <header className="flex w-full ">
-            <button
-              onClick={handleBackClick}
-              className=" text-primary hover:text-pink-700 transition duration-200"
-            >
-              <img src={back} alt="back button" />
-            </button>
-          </header>
+          <Header onClick={handleBackClick} />
 
           <main className="w-screen flex items-center flex-grow">
             {/* Información del cliente */}
@@ -96,24 +88,8 @@ export const Clientes: React.FC = () => {
           </main>
 
           {/* Navegación inferior */}
-          <footer className="mt-10 w-full flex justify-center space-x-8 text-xs">
-            {[
-              "Servicios",
-              "Portfolio",
-              "Nosotros",
-              "Whitepaper",
-              "Mi Cuenta",
-            ].map((item, index) => (
-              // <button
-              //   key={index}
-              //   className="hover:text-pink-500 transition duration-200"
-              // >
-              //   {item}
-              // </button>
 
-              <SimpleButton text={item} onClick={() => {}} key={item} />
-            ))}
-          </footer>
+          <Footer />
         </div>
       </div>
     </>
