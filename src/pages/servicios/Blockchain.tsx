@@ -7,48 +7,85 @@ import staking from "../../assets/staking.png";
 import asesoria from "../../assets/asesoria.png";
 import marketplace from "../../assets/marketplace.png";
 import nft from "../../assets/coleccion-nft.png";
-import signoSuma from "../../assets/signo-suma.png";
-import AiSolves from "../../assets/AiSolves.png";
 
-import SimpleButton from "../../components/buttons/SimpleButton";
 import Footer from "../../components/Footer";
 import { ServiceItem } from "./components/ServiceItem";
-
-const blockchainServices = [
-  {
-    title: "Tokenización de activos",
-    img: tokenizacionActivos,
-  },
-  {
-    title: "Creación de Token",
-    img: creacionToken,
-  },
-  {
-    title: "Smart DAPPS y contratos",
-    img: smartDapps,
-  },
-  {
-    title: "Staking",
-    img: staking,
-  },
-  {
-    title: "Asesoría",
-    img: asesoria,
-  },
-  {
-    title: "Colección NFT Completa",
-    img: nft,
-  },
-  {
-    title: "Marketplace",
-    img: marketplace,
-  },
-];
+import { useState } from "react";
 
 export const Blockchain: React.FC = () => {
   const handleBackClick = () => {
     console.log("Botón de regreso presionado");
   };
+
+  const [isTokenizationActive, setIsTokenizationActive] = useState(false);
+  const [isTokenCreationActive, setIsTokencreationActive] = useState(false);
+  const [isSmartDappsActive, setIsSmartDappsActive] = useState(false);
+  const [isStakingActive, setIsStakingActive] = useState(false);
+  const [isAsesoriaActive, setIsAsesoriaActive] = useState(false);
+  const [isNftActive, setIsNftActive] = useState(false);
+  const [isMarketplaceActive, setIsMarketplaceActive] = useState(false);
+
+  const blockchainServices = [
+    {
+      title: "Tokenización de activos",
+      description: "Tokenizá tus activos con nosotros",
+      img: tokenizacionActivos,
+      isDescriptionActive: isTokenizationActive,
+      setIsDescriptionActive: setIsTokenizationActive,
+    },
+    {
+      title: "Creación de Token",
+      description:
+        "Tu propio token ERC-20 para tu proyecto, con los tokenomics que prefieras",
+
+      img: creacionToken,
+      isDescriptionActive: isTokenCreationActive,
+      setIsDescriptionActive: setIsTokencreationActive,
+    },
+    {
+      title: "Smart DAPPS y contratos",
+      description:
+        "Desarrollamos Smart Contracts y DAPPS que cumplan con los requisitos de tu proyecto",
+      img: smartDapps,
+      isDescriptionActive: isSmartDappsActive,
+      setIsDescriptionActive: setIsSmartDappsActive,
+    },
+    {
+      title: "Staking",
+      description:
+        "La posibikidad de ofrecer una recompensa a los holders de tu Token o NFTs",
+
+      img: staking,
+      isDescriptionActive: isStakingActive,
+      setIsDescriptionActive: setIsStakingActive,
+    },
+    {
+      title: "Asesoría",
+      description:
+        "Desde el desarrollo de tu proyecto hasta aspectos legales y contables, te respaldamos en cada etapa",
+
+      img: asesoria,
+      isDescriptionActive: isAsesoriaActive,
+      setIsDescriptionActive: setIsAsesoriaActive,
+    },
+    {
+      title: "Colección NFT Completa",
+      description: "Creá tu colección NFT con nosotros",
+
+      img: nft,
+      isDescriptionActive: isNftActive,
+      setIsDescriptionActive: setIsNftActive,
+    },
+    {
+      title: "Marketplace",
+      description:
+        "Tu propio marketplace como Opensea o un mercado secundario para tus NFTs",
+
+      img: marketplace,
+      isDescriptionActive: isMarketplaceActive,
+      setIsDescriptionActive: setIsMarketplaceActive,
+    },
+  ];
 
   return (
     <div className="relative flex min-h-screen w-full overflow-hidden bg-background p-16">
@@ -63,7 +100,6 @@ export const Blockchain: React.FC = () => {
       </video>
 
       <div className="relative text-white flex flex-col w-full">
-        {/* Botón de regreso */}
         <header className="flex w-full ">
           <button
             onClick={handleBackClick}
@@ -79,7 +115,7 @@ export const Blockchain: React.FC = () => {
           </div>
 
           {/* Carrusel de itmes de servicios */}
-          <div className="flex flex-wrap justify-evenly items-center overflow-hidden mx-auto snap-x scrollbar-hide w-1/2 h-3/4">
+          <div className="flex flex-wrap justify-evenly items-center overflow-hidden mx-auto snap-x scrollbar-hide w-1/2 h-auto gap-4">
             {blockchainServices.map((item) => (
               <ServiceItem item={item} />
             ))}

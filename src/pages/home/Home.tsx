@@ -28,7 +28,11 @@ export const Home: React.FC = () => {
             {/* Servicios */}
 
             <div className="w-fit  top-0 left-0 absolute ">
-              <SimpleButton text="Servicios" onClick={() => {}} />
+              <SimpleButton
+                text="Servicios"
+                onClick={() => {}}
+                showLine={true}
+              />
             </div>
 
             <div className="w-fit  bottom-0 left-0 absolute ">

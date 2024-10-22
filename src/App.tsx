@@ -1,5 +1,5 @@
-import backgroundVideo from "./assets/background-video.mp4";
-import SimpleButton from "./components/buttons/SimpleButton";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./index.css";
 import { Clientes } from "./pages/clientes/Clientes";
 import { Equipo } from "./pages/equipo/Equipo";
@@ -10,12 +10,21 @@ import { Servicios } from "./pages/servicios/Servicios";
 
 function App() {
   return (
-    // <Clientes />
-    // <Equipo />
-    // <Home />
-    // <Servicios />
-    // <Blockchain />
-    <Marketing />
+    <Router>
+      <Routes>
+        {/* Ruta principal */}
+        <Route path="/" element={<Home />} />
+
+        {/* Ruta para About */}
+        <Route path="/clients" element={<Clientes />} />
+        <Route path="/team" element={<Equipo />} />
+
+        {/* Rutas anidadas dentro de Dashboard */}
+        <Route path="/services" element={<Servicios />} />
+        <Route path="/services/blockchain" element={<Blockchain />} />
+        <Route path="/services/marketing" element={<Marketing />} />
+      </Routes>
+    </Router>
 
     //   <div className="relative h-screen w-screen overflow-hidden bg-background">
     //   <video

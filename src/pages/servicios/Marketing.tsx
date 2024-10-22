@@ -7,30 +7,49 @@ import seoSem from "../../assets/seo-sem.png";
 
 import Footer from "../../components/Footer";
 import { ServiceItem } from "./components/ServiceItem";
-
-const marketingServices = [
-  {
-    title: "Automatización y CRM",
-    img: automatizacion,
-  },
-  {
-    title: "Redes Sociales",
-    img: redesSociales,
-  },
-  {
-    title: "Branding",
-    img: branding,
-  },
-  {
-    title: "SEO / SEM",
-    img: seoSem,
-  },
-];
+import { useState } from "react";
 
 export const Marketing: React.FC = () => {
   const handleBackClick = () => {
     console.log("Botón de regreso presionado");
   };
+
+  const [isAutomatizationActive, setIsAutomatizationActive] = useState(false);
+  const [isSocialMediaActive, setIsSocialMediaActive] = useState(false);
+  const [isBrandingActive, setIsBrandingActive] = useState(false);
+  const [isSeoSemActive, setIsSeoSemActive] = useState(false);
+
+  const marketingServices = [
+    {
+      title: "Automatización y CRM",
+      img: automatizacion,
+      description: "Gestión de CRM y automatización de marketing y ventas",
+      isDescriptionActive: isAutomatizationActive,
+      setIsDescriptionActive: setIsAutomatizationActive,
+    },
+    {
+      title: "Redes Sociales",
+      img: redesSociales,
+      description: "Creación y Gestión de Ccontenido para redes sociales",
+      isDescriptionActive: isSocialMediaActive,
+      setIsDescriptionActive: setIsSocialMediaActive,
+    },
+    {
+      title: "Branding",
+      img: branding,
+      description:
+        "Desarrollo de identidad corporativa y estrategias de branding",
+      isDescriptionActive: isBrandingActive,
+      setIsDescriptionActive: setIsBrandingActive,
+    },
+    {
+      title: "SEO / SEM",
+      img: seoSem,
+      description: "Optimización para buscadores y campañas SEM",
+      isDescriptionActive: isSeoSemActive,
+      setIsDescriptionActive: setIsSeoSemActive,
+    },
+  ];
 
   return (
     <div className="relative flex min-h-screen w-full overflow-hidden bg-background p-16">
