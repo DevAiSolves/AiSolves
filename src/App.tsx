@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./index.css";
-import { Clientes } from "./pages/clientes/Clientes";
+import { Eventos } from "./pages/events/Eventos";
 import { Equipo } from "./pages/equipo/Equipo";
 import { Home } from "./pages/home/Home";
 import { Blockchain } from "./pages/servicios/Blockchain";
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* Ruta para About */}
-        <Route path="/clients" element={<Clientes />} />
+        <Route path="/clients" element={<Eventos />} />
         <Route path="/team" element={<Equipo />} />
 
         {/* Rutas anidadas dentro de Dashboard */}

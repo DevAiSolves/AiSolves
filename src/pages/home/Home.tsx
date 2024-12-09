@@ -8,7 +8,7 @@ export const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const goToServices = () => navigate("/services");
-  const goToPortfolio = () => navigate("/clients");
+  const goToEvents = () => navigate("/clients");
   const goToWhitePaper = () => navigate("/");
   const goToAboutUs = () => navigate("/team");
 
@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
             </div>
 
             <div className="w-fit  bottom-0 left-0 absolute ">
-              <SimpleButton text="Portafolio" onClick={goToPortfolio} />
+              <SimpleButton text="Eventos" onClick={goToEvents} />
             </div>
 
             <div className="w-fit  top-0 right-0 absolute ">
