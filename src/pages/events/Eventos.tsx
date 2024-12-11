@@ -70,39 +70,26 @@ export const Eventos: React.FC = () => {
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="relative flex-shrink-0 w-64 h-96 border-2 bg-black border-primary rounded-lg  m-4 overflow-hidden"
+                  className="relative flex-shrink-0 w-64 h-96 border-2 bg-black border-primary rounded-lg m-4 flex flex-col overflow-hidden"
                 >
-                  {/* Backgorund */}
-                  {/* <video
-                    autoPlay
-                    loop
-                    muted
-                    className="absolute opacity-50 top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover"
-                  >
-                    <source src={event.background} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video> */}
+                  {/* Background */}
 
-                  <img src={event.background} alt={event.title} />
+                  <img
+                    src={event.background}
+                    alt={event.title}
+                    className=" object-cover"
+                  />
 
-                  {/* Content */}
-                  <header className="text-primary text-xs p-2">
-                    {event.title} {">>>>>>>>>"}
-                  </header>
+                  {/* Buttons Container */}
+                  <div className="flex w-full justify-evenly p-4 top-0 absolute bg-black/30 shadow-lg shadow-black/20">
+                    <button className="text-white font-medium border-primary hover:text-pink-700 transition border py-1 px-4 rounded-full text-xs bg-primary">
+                      BUY
+                    </button>
 
-                  <div className="h-0.5 w-full bg-primary" />
-
-                  <div className="text-primary text-4xl font-bold mb-4 h-full flex flex-col justify-center p-2">
-                    {event.title}
+                    <button className="text-white font-medium border-primary hover:text-pink-700 transition border py-1 px-4 rounded-full text-xs bg-primary">
+                      VERIFY
+                    </button>
                   </div>
-
-                  <button className="absolute bottom-4 left-4 text-primary font-medium border-primary hover:text-pink-700 transition border py-1 px-6 rounded-full text-xs">
-                    BUY
-                  </button>
-
-                  <button className="absolute bottom-4 left-4 text-primary font-medium border-primary hover:text-pink-700 transition border py-1 px-6 rounded-full text-xs">
-                    VERIFY
-                  </button>
                 </div>
               ))}
             </div>
