@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import backgroundVideo from "../../assets/background-video.mp4";
 import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
 
 export const Dasboard: React.FC = () => {
+  const navigate = useNavigate();
   const handleBackClick = () => {
-    console.log("Botón de regreso presionado");
+    navigate("/events");
   };
 
   return (

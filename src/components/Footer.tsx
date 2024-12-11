@@ -9,7 +9,7 @@ export const Footer = () => {
     navigate("/services");
   };
   const navigateToPortfolio = () => {
-    navigate("/clients");
+    navigate("/events");
   };
   const navigateToAboutUs = () => {
     navigate("/team");
