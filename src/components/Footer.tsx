@@ -18,13 +18,17 @@ export const Footer = () => {
     navigate("/");
   };
 
+  const navigateToDashboard = () => {
+    navigate("/dashboard");
+  };
+
   const buttons = [
     {
       text: "Servicios",
       onClick: navigateToServices,
     },
     {
-      text: "Portfolio",
+      text: "Eventos",
       onClick: navigateToPortfolio,
     },
     {
@@ -46,7 +50,11 @@ export const Footer = () => {
       {buttons.map((item) => (
         <SimpleButton text={item.text} onClick={item.onClick} key={item.text} />
       ))}
-      <SimpleButton text={"Mi cuenta"} onClick={() => {}} alwaysShadow={true} />
+      <SimpleButton
+        text={"Dashboard"}
+        onClick={navigateToDashboard}
+        alwaysShadow={true}
+      />
     </footer>
   );
 };

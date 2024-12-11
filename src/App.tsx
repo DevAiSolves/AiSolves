@@ -7,6 +7,7 @@ import { Home } from "./pages/home/Home";
 import { Blockchain } from "./pages/servicios/Blockchain";
 import { Marketing } from "./pages/servicios/Marketing";
 import { Servicios } from "./pages/servicios/Servicios";
+import { Dasboard } from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
@@ -18,10 +19,12 @@ function App() {
         {/* Ruta para About */}
         <Route path="/clients" element={<Eventos />} />
         <Route path="/team" element={<Equipo />} />
+        <Route path="/dashboard" element={<Dasboard />} />
 
         {/* Rutas anidadas dentro de Dashboard */}
         <Route path="/services" element={<Servicios />} />
         <Route path="/services/blockchain" element={<Blockchain />} />
+        <Route path="/services/marketing" element={<Marketing />} />
         <Route path="/services/marketing" element={<Marketing />} />
       </Routes>
     </Router>

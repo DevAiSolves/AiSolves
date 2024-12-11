@@ -1,13 +1,12 @@
 import backgroundVideo2 from "../../assets/background-video-2.mp4";
-import aleatory from "../../assets/aleatory-background-video.mp4";
-import cocay from "../../assets/cocay-token-background-video.mov";
-import zamina from "../../assets/zamina-nft-background-video.mov";
 import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
 import dayOne from "../../assets/events/day-1.png";
 import dayTwo from "../../assets/events/day-2.png";
 import dayThree from "../../assets/events/day-3.png";
 import dayFour from "../../assets/events/day-4.png";
+import flayer from "../../assets/events/flayer.png";
+import nftEvent from "../../assets/events/nftEvent.mp4";
 
 export const Eventos: React.FC = () => {
   const handleBackClick = () => {
@@ -15,6 +14,11 @@ export const Eventos: React.FC = () => {
   };
 
   const events = [
+    {
+      title: "AiSolves",
+      description: "",
+      background: nftEvent,
+    },
     {
       title: "DAY ONE",
       description:
@@ -41,6 +45,11 @@ export const Eventos: React.FC = () => {
 
       background: dayFour,
     },
+    {
+      title: "TULUM CRYPTO FEST",
+      description: "",
+      background: flayer,
+    },
   ];
 
   return (
@@ -59,25 +68,37 @@ export const Eventos: React.FC = () => {
         <div className="relative text-white flex flex-col">
           <Header onClick={handleBackClick} />
 
-          <main className="w-screen flex items-center flex-grow">
+          <main className="w-full flex items-center flex-grow">
             {/* Información del cliente */}
-            <div className="absolute transform -translate-y-1/2 left-0 top-1/2  text-primary text-3xl font-bold w-1/4">
+            {/* <div className="absolute transform -translate-y-1/2 left-0 top-1/2  text-primary text-3xl font-bold w-1/4">
               CONOCE ACERCA DE NUESTROS CLIENTES
-            </div>
+            </div> */}
 
             {/* Carrusel de tarjetas de clientes */}
-            <div className="flex overflow-hidden mx-auto snap-x scrollbar-hide">
+            <div className="flex  mx-auto snap-x scrollbar-hide wrap">
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="relative flex-shrink-0 w-64 h-96 border-2 bg-black border-primary rounded-lg m-4 flex flex-col overflow-hidden"
+                  className="relative flex-shrink-0 w-52 h-96 border-2 bg-black border-primary rounded-lg m-4 flex flex-col overflow-hidden"
                 >
                   {/* Background */}
+
+                  {/* Fondo de video solo para una tarjeta específica */}
+                  {index === 0 && (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      className="absolute top-0 left-0 w-full h-full object-cover z-0"
+                    >
+                      <source src={event.background} type="video/mp4" />
+                    </video>
+                  )}
 
                   <img
                     src={event.background}
                     alt={event.title}
-                    className=" object-cover"
+                    className="object-cover h-full"
                   />
 
                   {/* Buttons Container */}
