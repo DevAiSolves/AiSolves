@@ -2,7 +2,7 @@ import backgroundVideo2 from "../../assets/background-video-2.mp4";
 import web3AndBlockchain from "../../assets/web3&blockchain.mp4";
 import esteticaDigital from "../../assets/estetica-digital.mp4";
 import mktDigital from "../../assets/mkt-digital.mp4";
-import back from "../../assets/Back.png";
+// import back from "../../assets/Back.png";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { Header } from "../../components/Header";
