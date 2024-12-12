@@ -6,11 +6,18 @@ import x from "../../assets/logos/x.webp";
 import instagram from "../../assets/logos/instagram.png";
 import github from "../../assets/logos/github.webp";
 import gitbook from "../../assets/logos/gitbook.webp";
-
+import {
+  ConnectButton,
+  useActiveAccount
+} from "thirdweb/react";
+import { client } from "../../../web3/hooks"
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Home: React.FC = () => {
+
+  const account = useActiveAccount()
+
   const navigate = useNavigate();
 
   const goToServices = () => navigate("/services");
@@ -21,6 +28,11 @@ export const Home: React.FC = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
 
   const toggleLoginModal = () => setIsLoginModalOpen((prev) => !prev);
+
+  useEffect(() => {
+    if (account)
+      navigate("/events")
+  }, [account])
 
   return (
     <>
@@ -64,13 +76,61 @@ export const Home: React.FC = () => {
                 />
               </div>
 
-              <button className="rounded-md w-1/3 bg-primary/85 text-white font-medium py-1 px-6 hover:bg-primary transition">
-                Connect Wallet
-              </button>
-              <button className="flex items-center gap-2 justify-center rounded-lg w-1/3 bg-primary/85 text-white font-medium py-1 px-6 hover:bg-primary transition">
-                Log In with Gmail
-                <img src={gmail} alt="Gmail logo" className="h-3 " />
-              </button>
+
+              <div className="w-[250px] relative">
+                <div className="absolute top-0 left-0 w-full h-full opacity-0">
+                  <ConnectButton
+                    client={client}
+                    appMetadata={{
+                      name: "Example App",
+                      url: "https://example.com",
+                    }}
+                    // wallets={[
+                    //   createWallet("io.metamask"),
+                    //   createWallet("com.coinbase.wallet"),
+                    //   createWallet("me.rainbow"),
+                    // ]}
+                    connectButton={{
+                      className: "!bg-[#FFF991] !w-full !h-full !font-black !uppercase !text-xs lg:!text-lg !px-0 !rounded-none !min-w-2",
+                      // style: {
+                      //   color: "red",
+                      // },
+                    }}
+                  />
+                </div>
+                <button className="rounded-md w-full bg-primary/85 text-white font-medium py-1 px-6 hover:bg-primary transition">
+                  Connect Wallet
+                </button>
+              </div>
+
+              <div className="w-[250px] relative flex justify-center">
+                <div className="absolute top-0 left-0 w-full h-full opacity-0">
+                  <ConnectButton
+                    client={client}
+                    appMetadata={{
+                      name: "Example App",
+                      url: "https://example.com",
+                    }}
+                    // wallets={[
+                    //   createWallet("io.metamask"),
+                    //   createWallet("com.coinbase.wallet"),
+                    //   createWallet("me.rainbow"),
+                    // ]}
+                    connectButton={{
+                      className: "!bg-[#FFF991] !w-full !h-full !font-black !uppercase !text-xs lg:!text-lg !px-0 !rounded-none !min-w-2",
+                      // style: {
+                      //   color: "red",
+                      // },
+                    }}
+                  />
+                </div>
+                <button className="flex items-center gap-2 justify-center rounded-lg w-full bg-primary/85 text-white font-medium py-1 px-6 hover:bg-primary transition">
+                  Log In with Gmail
+                  <img src={gmail} alt="Gmail logo" className="h-3 " />
+                </button>
+              </div>
+
+
             </div>
           ) : null}
 
@@ -121,7 +181,7 @@ export const Home: React.FC = () => {
             />
           </div>
 
-          <SimpleButton text="Smart contract" onClick={() => {}} />
+          <SimpleButton text="Smart contract" onClick={() => { }} />
         </div>
       </div>
     </>
