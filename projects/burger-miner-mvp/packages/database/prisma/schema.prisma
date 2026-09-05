@@ -1,0 +1,101 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+
+enum LedgerType { GAME_REWARD REFERRAL MARKET_REDEMPTION ADMIN_ADJUSTMENT PROMOTION SEASON_REWARD REVERSAL }
+enum RedemptionStatus { PENDING REDEEMED EXPIRED CANCELLED FRAUD_REVIEW }
+
+model User {
+  id String @id @default(cuid())
+  googleSub String @unique
+  email String @unique
+  name String?
+  avatarUrl String?
+  profile PlayerProfile?
+  wallet Wallet?
+  sessions GameSession[]
+  redemptions Redemption[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PlayerProfile {
+  id String @id @default(cuid())
+  userId String @unique
+  username String? @unique
+  level Int @default(1)
+  xp BigInt @default(0)
+  totalHash BigInt @default(0)
+  miningPower BigInt @default(0)
+  energy Int @default(500)
+  maxEnergy Int @default(500)
+  user User @relation(fields:[userId], references:[id], onDelete: Cascade)
+}
+
+model Wallet {
+  id String @id @default(cuid())
+  userId String @unique
+  hashBalance BigInt @default(0)
+  burgerPoints BigInt @default(0)
+  lockedBalance BigInt @default(0)
+  user User @relation(fields:[userId], references:[id], onDelete: Cascade)
+  entries LedgerEntry[]
+}
+
+model LedgerEntry {
+  id String @id @default(cuid())
+  walletId String
+  type LedgerType
+  amount BigInt
+  currency String
+  referenceType String?
+  referenceId String?
+  balanceBefore BigInt
+  balanceAfter BigInt
+  createdAt DateTime @default(now())
+  wallet Wallet @relation(fields:[walletId], references:[id], onDelete: Cascade)
+  @@index([walletId, createdAt])
+}
+
+model GameSession {
+  id String @id @default(cuid())
+  userId String
+  seed BigInt
+  startedAt DateTime @default(now())
+  endedAt DateTime?
+  validatedHash BigInt @default(0)
+  trustScore Int @default(100)
+  user User @relation(fields:[userId], references:[id], onDelete: Cascade)
+}
+
+model Merchant {
+  id String @id @default(cuid())
+  name String
+  active Boolean @default(true)
+  products Product[]
+}
+
+model Product {
+  id String @id @default(cuid())
+  merchantId String
+  name String
+  description String?
+  imageUrl String?
+  priceBp BigInt
+  stock Int
+  active Boolean @default(true)
+  merchant Merchant @relation(fields:[merchantId], references:[id], onDelete: Cascade)
+  redemptions Redemption[]
+}
+
+model Redemption {
+  id String @id @default(cuid())
+  userId String
+  productId String
+  codeHash String @unique
+  status RedemptionStatus @default(PENDING)
+  expiresAt DateTime
+  redeemedAt DateTime?
+  createdAt DateTime @default(now())
+  user User @relation(fields:[userId], references:[id])
+  product Product @relation(fields:[productId], references:[id])
+}
